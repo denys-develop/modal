@@ -1,0 +1,120 @@
+.card {
+    position: relative;
+}
+
+.card__fav-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 9;
+
+    @include mobile {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.card__btn-favorite {
+
+    &:hover .icon--favorite {
+        stroke: rgb(227, 50, 121); // цвет оконтовки иконки по ховеру
+    }
+
+    &--selected .icon--favorite {  // если есть у кнопки модификатор  &--selected то иконка выбирается в избраное
+        stroke:  var(--state-color-error);  // цвет оконтовки иконки
+        fill: var(--state-color-error); // цвет заливки иконки
+
+        &:hover {
+            stroke:  var(--state-color-error); // когда выбрана иконка что бы не работал другой цвет ховера
+        }
+    }
+}
+
+
+.card__body {
+    padding: 5.5px 8px;
+
+    display: grid;
+    gap: 8px;
+
+    @include mobile {
+        padding: 0;
+    }
+}
+
+.card__title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    text-transform: capitalize;
+    color: var(--black);
+
+    @include mobile {
+        font-weight: 600;
+        font-size: 14px;
+    }   
+
+    a {
+        color: var(--black);
+    }
+
+    &::after {  // растянули ссылку Заголовка карточки на всю карточку, что бы можно было нажать на любую часть карточки и выюрать ее, а не вещать ссылку на всю карточку полностью
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.card__cols {
+   display: grid;
+   grid-template-columns: 1fr auto;
+   gap: 12px;
+
+   @include mobile {
+       flex-wrap: wrap;
+   }
+}
+
+.card__desc {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 180%;
+    text-transform: capitalize;
+    color: var(--black);
+
+    @include mobile {
+        font-size: 14px;
+        line-height: 140%;
+    }
+}
+
+.card__price {
+    text-align: right;
+
+
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 180%;
+    text-transform: capitalize;
+    color: var(--black);
+
+    @include mobile {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 140%;
+    }
+}
+
+.card__colors {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
